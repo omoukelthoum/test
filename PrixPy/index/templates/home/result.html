@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+{% block content %}
+
+
+<!-- Write HTML code here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  
+<div class="container">
+  <h2 class="text-center"><u>Données importées</u></h2><br>            
+  <table class="table table-dark table-striped">
+  
+  {% if found %}
+    <thead>
+      
+      <tr>
+      						
+        <th>code Produit</th>
+        <th>code groupe</th>
+        <th>code sous-groupe</th>
+        <th>code poste</th>
+        <th>code variété</th>
+        <th>code fonction</th>
+        <th>nom produit</th>
+        <th>Importé</th>
+        <th>type produit</th>
+        <th>Prix de base</th>
+        <th>Importe</th>
+        <th>Local</th>
+        <th>Ponderation</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <!-- jinja2 Technique -->
+    {% for data in datab %}
+      <tr>
+      															
+        <td>{{data.code_fonction}}</td>
+        <td>{{data.code_groupe}}</td>
+        <td>{{data.code_sous_groupe}}</td>
+        <td>{{data.code_poste}}</td>
+        <td>{{data.code_variete}}</td>
+        <td>{{data.nom_prod}}</td>
+        <td>{{data.libelle_court}}</td>
+        <td>{{data.libelle_long}}</td>
+        <td>{{data.date_de_creation}}</td>
+        <td>{{data.type}}</td>
+        <td>{{data.Prix_de_base}}</td>
+<<<<<<< HEAD
+        <td>{{data.Importe}}</td>
+        <td>{{data.Local}}</td>
+        <td>{{data.Ponderation}}</td>
+=======
+>>>>>>> f06822ed433f84ef1fa668814add6171b808aa43
+      </tr>
+    {% endfor %}
+  {% else %}
+      <thead>
+          
+        <tr>
+          <th>serie code</th>
+          <th>type serie</th>
+          <th>produit</th>
+          <th>année</th>
+          <th>codpv</th>
+          <th>Nompv</th>
+          <th>mois</th>
+          <th>prix observé</th>
+
+        </tr>
+      </thead>
+        <tbody>
+        {% for data in datab %}
+          <tr> 							
+            <td>{{data.sercod}}</td>
+            <td>{{data.sertyp}}</td>
+            <td>{{data.Produit}}</td>
+            <td>{{data.Année}}</td>
+            <td>{{data.codpv}}</td>
+            <td>{{data.nompv}}</td>
+            <td>{{data.mois}}</td>
+            <td>{{data.prxobs}}</td>
+          </tr>
+        {% endfor %}
+  {% endif %}
+
+      
+
+
+        </tbody>
+  </table>
+</div>
+  
+</body>
+</html>
+
+{% endblock content %}
+
+          
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+          
+<script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+          
+{% endblock javascripts %}

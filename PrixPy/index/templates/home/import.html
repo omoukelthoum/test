@@ -1,0 +1,172 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+{% block content %}
+
+<form action="ind_elem" method="post">
+  {% csrf_token %}
+  <style>
+    .container { 
+      height: 200px;
+      position: relative;
+    
+    }
+    
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    </style>
+  <div class="container">
+  <div class="center">
+      <button type="submit"  class="cta">
+        
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text"> Let's go!
+        </span>
+        <style>
+          /* From uiverse.io */
+            button {
+            position: relative;
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            outline-offset: 4px;
+            transition: filter 250ms;
+            user-select: none;
+            touch-action: manipulation;
+            }
+
+            .shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: hsl(0deg 0% 0% / 0.25);
+            will-change: transform;
+            transform: translateY(2px);
+            transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+
+            .edge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(
+                to left,
+                hsl(340deg 100% 16%) 0%,
+                hsl(340deg 100% 32%) 8%,
+                hsl(340deg 100% 32%) 92%,
+                hsl(340deg 100% 16%) 100%
+              );
+            }
+
+            .front {
+            display: block;
+            position: relative;
+            padding: 12px 27px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: white;
+            background: hsl(345deg 100% 47%);
+            will-change: transform;
+            transform: translateY(-4px);
+            transition: transform
+                600ms
+                cubic-bezier(.3, .7, .4, 1);
+            }
+
+            button:hover {
+            filter: brightness(110%);
+            }
+
+            button:hover .front {
+            transform: translateY(-6px);
+            transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+
+            button:active .front {
+            transform: translateY(-2px);
+            transition: transform 34ms;
+            }
+
+            button:hover .shadow {
+            transform: translateY(4px);
+            transition: transform
+                250ms
+                cubic-bezier(.3, .7, .4, 1.5);
+            }
+
+            button:active .shadow {
+            transform: translateY(1px);
+            transition: transform 34ms;
+            }
+
+            button:focus:not(:focus-visible) {
+            outline: none;
+            }
+        </style>
+      </button>
+    </div>
+  </div>
+
+<div class="container">          
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>indice local</th>
+        <th>indice importé</th>
+        <th>indice global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{loc}}</td>
+        <td>{{imp}}</td>
+        <td>{{glob}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+  
+  
+
+</form>
+
+
+
+
+
+
+
+{% endblock content %}
+
+          
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+          
+<script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+          
+{% endblock javascripts %}
